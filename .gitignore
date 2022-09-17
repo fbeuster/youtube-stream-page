@@ -1,3 +1,7 @@
+# raw resources
+*.psd
+
 # packaged files
 *.crx
 *.pem
+*.zip

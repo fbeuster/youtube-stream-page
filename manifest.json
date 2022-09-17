@@ -1,8 +1,14 @@
 {
   "name" : "YouTube Stream Page",
-  "version" : "1",
+  "version" : "1.0.1",
   "description" : "Making a better live stream watch page for YouTube",
   "action" : {},
+  "icons": {
+    "16": "logo16.png",
+    "32": "logo32.png",
+    "48": "logo48.png",
+    "128": "logo128.png"
+  },
   "manifest_version" : 3,
   "content_scripts": [
     {
