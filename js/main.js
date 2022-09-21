@@ -14,6 +14,6 @@ function addstylesheet(filename) {
 }
 
 if (window.location.href.match(/(https:\/\/(.*youtube\.com\/.*))/i)){
-  addScript("watchpage.js");
-  addstylesheet("watchpage.css");
+  addScript("js/watchpage.js");
+  addstylesheet("css/watchpage.css");
 }

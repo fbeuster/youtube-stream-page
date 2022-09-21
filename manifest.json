@@ -1,26 +1,25 @@
 {
   "name" : "YouTube Stream Page",
-  "version" : "1.0.1",
+  "version" : "1.0.2",
   "description" : "Making a better live stream watch page for YouTube",
   "action" : {},
   "icons": {
-    "16": "logo16.png",
-    "32": "logo32.png",
-    "48": "logo48.png",
-    "128": "logo128.png"
+    "16": "img/logo16.png",
+    "32": "img/logo32.png",
+    "48": "img/logo48.png",
+    "128": "img/logo128.png"
   },
   "manifest_version" : 3,
   "content_scripts": [
     {
       "matches" : ["https://*.youtube.com/*"],
-      "js": ["main.js"]
+      "js": ["js/main.js"]
     }
   ],
-  "permissions": ["activeTab"],
   "host_permissions": ["https://*.youtube.com/*"],
   "web_accessible_resources": [
   {
-    "resources": [ "watchpage.css", "watchpage.js"],
+    "resources": [ "css/watchpage.css", "js/watchpage.js"],
     "matches": [ "https://*.youtube.com/*" ]
   }]
 }
