@@ -16,7 +16,6 @@
       "js": ["main.js"]
     }
   ],
-  "permissions": ["activeTab"],
   "host_permissions": ["https://*.youtube.com/*"],
   "web_accessible_resources": [
   {
