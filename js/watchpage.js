@@ -31,8 +31,8 @@ function setPlayerSize() {
     var target_width = 0;
     var target_height = 0;
 
-    var ratio_width = parseInt(yt_styles.getPropertyValue('--ytd-watch-flexy-width-ratio'), 10);
-    var ratio_height = parseInt(yt_styles.getPropertyValue('--ytd-watch-flexy-height-ratio'), 10);
+    var ratio_width = parseFloat(yt_styles.getPropertyValue('--ytd-watch-flexy-width-ratio'));
+    var ratio_height = parseFloat(yt_styles.getPropertyValue('--ytd-watch-flexy-height-ratio'));
     var ratio = ratio_width / ratio_height;
 
     if (available_width / ratio < available_height) {

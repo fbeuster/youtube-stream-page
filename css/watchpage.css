@@ -3,56 +3,56 @@
   --wideo-height: calc(var(--video-width) / 16 * 9);
 }*/
 
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]  #columns.ytd-watch-flexy {
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #columns.ytd-watch-flexy {
   max-width: inherit;
 }
 
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_] :not([theater]):not([fullscreen]):not([no-top-margin]) #secondary.ytd-watch-flexy {
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #secondary.ytd-watch-flexy {
   padding: 0;
 }
 
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_] #primary.ytd-watch-flexy {
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #primary.ytd-watch-flexy {
   width: var(--video-width);
   max-width: inherit;
   padding: 0;
   margin: 0;
 }
 
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]  #primary.ytd-watch-flexy #primary-inner #player {
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #primary.ytd-watch-flexy #primary-inner #player {
   background: black;
 }
 
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]  #primary.ytd-watch-flexy #primary-inner #player-container-outer,
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]  #primary.ytd-watch-flexy #primary-inner #below {
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #primary.ytd-watch-flexy #primary-inner #player-container-outer,
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #primary.ytd-watch-flexy #primary-inner #below {
   width: var(--video-width);
   margin: 0 auto;
 }
 
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]  #primary.ytd-watch-flexy #player-container-outer {
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #primary.ytd-watch-flexy #player-container-outer {
   max-width: inherit;
 }
 
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]  #primary.ytd-watch-flexy #primary-inner #player-container-outer,
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]  .html5-video-player .video-stream,
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]  #player-container-outer.ytd-watch-flexy .ytp-iv-video-content {
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #primary.ytd-watch-flexy #primary-inner #player-container-outer,
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) .html5-video-player .video-stream,
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #player-container-outer.ytd-watch-flexy .ytp-iv-video-content {
   width: var(--video-width) !important;
   height: var(--video-height) !important;
 }
 
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]  #player-container-outer.ytd-watch-flexy .ytp-chrome-bottom {
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #player-container-outer.ytd-watch-flexy .ytp-chrome-bottom {
   width: var(--video-width) !important;
 }
 
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]  #player-container-outer.ytd-watch-flexy .ytp-chrome-top,
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]  #player-container-outer.ytd-watch-flexy .ytp-chrome-bottom {
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #player-container-outer.ytd-watch-flexy .ytp-chrome-top,
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #player-container-outer.ytd-watch-flexy .ytp-chrome-bottom {
   left: 0 !important;
 }
 
-#bottom-row.ytd-watch-metadata {
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #bottom-row.ytd-watch-metadata {
   margin-right: 0;
 }
 
-.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_][js-panel-height_] #chat.ytd-watch-flexy:not([collapsed]).ytd-watch-flexy {
+.yt-stream-page ytd-watch-flexy[flexy][is-two-columns_][is-four-three-to-sixteen-nine-video_]:not([theater]):not([fullscreen]) #chat.ytd-watch-flexy:not([collapsed]).ytd-watch-flexy {
   width: var(--ytd-watch-flexy-sidebar-width) !important;
   height: calc(100vh - var(--ytd-watch-flexy-masthead-height));
 }
