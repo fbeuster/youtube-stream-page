@@ -1,4 +1,5 @@
 var isWatchPage = false;
+var onloadData = {};
 
 function vh(percent) {
   var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -11,7 +12,7 @@ function vw(percent) {
 }
 
 function setPlayerSize() {
-  if (!isWatchPage) {
+  if (!isWatchPage || !isYspActive()) {
     document.body.style.removeProperty('--video-width');
     document.body.style.removeProperty('--video-height');
 
@@ -50,6 +51,8 @@ function setPlayerSize() {
 }
 
 function locationChanged(event) {
+  if (!isYspActive()) return;
+
   isWatchPage = event.detail.pageType === 'watch';
 
   setTimeout(() => {
@@ -61,17 +64,70 @@ function locationChanged(event) {
 function updateBodyClass() {
   var bodyClass = 'yt-stream-page';
 
-  setTimeout(() => {
-    if (isWatchPage) {
-      document.getElementsByTagName('body')[0].classList.add(bodyClass);
+  if (isWatchPage) {
+    document.getElementsByTagName('body')[0].classList.add(bodyClass);
 
-    } else {
-      document.getElementsByTagName('body')[0].classList.remove(bodyClass);
-    }
-  }, 1000);
+  } else {
+    document.getElementsByTagName('body')[0].classList.remove(bodyClass);
+  }
+}
+
+function isDarkThemeActive() {
+  return document.querySelector('html').hasAttribute('dark');
+}
+
+function isYspActive() {
+  var bodyClass = 'yt-stream-page';
+  return document.getElementsByTagName('body')[0].classList.contains(bodyClass);
+}
+
+function addControls() {
+  var theme = isDarkThemeActive() ? 'dark' : 'light';
+
+  var ysp_menu_button = document.createElement('img');
+  ysp_menu_button.addEventListener('click', ypsButtonClick);
+  ysp_menu_button.alt = 'Click to disable YouTube Stream Page';
+  ysp_menu_button.classList.add('ysp-menu-button');
+  ysp_menu_button.classList.add('ytd-masthead');
+  ysp_menu_button.src = onloadData.img['ysp_active_' + theme];
+  ysp_menu_button.title = 'Click to disable YouTube Stream Page';
+
+  var top_right_menu = document.querySelector('#masthead #end #buttons');
+  top_right_menu.insertBefore(ysp_menu_button, top_right_menu.firstChild);
+}
+
+function ypsButtonClick(event) {
+  toggleYspActiveClass();
+}
+
+function toggleYspActiveClass() {
+  var theme = isDarkThemeActive() ? 'dark' : 'light';
+  var bodyClass = 'yt-stream-page';
+  var bodyClassList = document.getElementsByTagName('body')[0].classList;
+  var ysp_menu_button = document.querySelector('.ysp-menu-button');
+
+  if (bodyClassList.contains(bodyClass)) {
+    bodyClassList.remove(bodyClass);
+    ysp_menu_button.alt = 'Click to enable YouTube Stream Page';
+    ysp_menu_button.src = onloadData.img['ysp_inactive_' + theme];
+    ysp_menu_button.title = 'Click to enable YouTube Stream Page';
+
+  } else {
+    bodyClassList.add(bodyClass);
+    ysp_menu_button.alt = 'Click to disable YouTube Stream Page';
+    ysp_menu_button.src = onloadData.img['ysp_active_' + theme];
+    ysp_menu_button.title = 'Click to disable YouTube Stream Page';
+  }
+}
+
+function yspOnload(event) {
+  onloadData = event.detail;
 }
 
 function init() {
+  // listen to extension data
+  window.addEventListener('ysp-onload', yspOnload);
+
   // listen to location changed
   window.addEventListener('yt-navigate-finish', locationChanged, true)
 
@@ -80,10 +136,12 @@ function init() {
 
   isWatchPage = document.location.pathname == '/watch';
 
+  // this delay is for YouTube's layout to load
   setTimeout(() => {
+    addControls();
     updateBodyClass();
     setPlayerSize();
-  }, 1000);
+  }, 2000);
 }
 
 init();

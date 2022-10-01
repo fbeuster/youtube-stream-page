@@ -19,7 +19,11 @@
   "host_permissions": ["https://*.youtube.com/*"],
   "web_accessible_resources": [
   {
-    "resources": [ "css/watchpage.css", "js/watchpage.js"],
+    "resources": [
+      "css/watchpage.css",
+      "img/ysp_*.png",
+      "js/watchpage.js"
+    ],
     "matches": [ "https://*.youtube.com/*" ]
   }]
 }
