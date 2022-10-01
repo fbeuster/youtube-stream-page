@@ -3,6 +3,22 @@ function addScript(filename) {
   script.src = chrome.runtime.getURL(filename);
   script.type = "text/javascript";
   document.getElementsByTagName("body")[0].appendChild(script);
+
+  // sending images over
+  script.onload = function() {
+    var data = {
+      'img' : {
+        'ysp_active_dark' : chrome.runtime.getURL('img/ysp_active_dark.png'),
+        'ysp_active_light' : chrome.runtime.getURL('img/ysp_active_light.png'),
+        'ysp_inactive_dark' : chrome.runtime.getURL('img/ysp_inactive_dark.png'),
+        'ysp_inactive_light' : chrome.runtime.getURL('img/ysp_inactive_light.png')
+      }
+    };
+
+    var event = document.createEvent('CustomEvent');
+    event.initCustomEvent('ysp-onload', true, true, data);
+    document.dispatchEvent(event);
+  }
 }
 
 function addstylesheet(filename) {

@@ -56,3 +56,14 @@
   width: var(--ytd-watch-flexy-sidebar-width) !important;
   height: calc(100vh - var(--ytd-watch-flexy-masthead-height));
 }
+
+.ysp-menu-button {
+  color: var(--yt-button-icon-button-text-color, var(--yt-spec-text-secondary));
+  cursor: pointer;
+  font-size: var(--ytd-tab-system-font-size);
+  font-weight: var(--ytd-tab-system-font-weight);
+  height: 32px;
+  letter-spacing: var(--ytd-tab-system-letter-spacing);
+  text-transform: var(--ytd-tab-system-text-transform);
+  width: 32px;
+}
