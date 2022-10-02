@@ -77,7 +77,7 @@ function isDarkThemeActive() {
 }
 
 function isYspActive() {
-  return onloadData.settings.is_active;
+  return onloadData.user_settings.is_active;
 }
 
 function addControls() {
@@ -112,13 +112,17 @@ function ypsButtonClick(event) {
 }
 
 function toggleYspActive() {
-  onloadData.settings.is_active = !isYspActive();
+  onloadData.user_settings.is_active = !isYspActive();
 
   var ysp_menu_button = document.querySelector('.ysp-menu-button');
   setYspMenuButtonVisuals(ysp_menu_button);
 
   updateBodyClass();
   setPlayerSize();
+
+  var event = document.createEvent('CustomEvent');
+  event.initCustomEvent('ysp-settings-user-change', true, true, onloadData.user_settings);
+  document.dispatchEvent(event);
 }
 
 function yspOnload(event) {

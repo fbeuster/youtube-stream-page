@@ -17,6 +17,7 @@
     }
   ],
   "host_permissions": ["https://*.youtube.com/*"],
+  "permissions" : ["storage"],
   "web_accessible_resources": [
   {
     "resources": [
