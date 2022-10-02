@@ -51,14 +51,14 @@ function setPlayerSize() {
 }
 
 function locationChanged(event) {
-  if (!isYspActive()) return;
-
-  isWatchPage = event.detail.pageType === 'watch';
-
   setTimeout(() => {
+    addControls();
+
+    isWatchPage = event.detail.pageType === 'watch';
+
     updateBodyClass();
     setPlayerSize();
-  }, 1000);
+  }, 2000);
 }
 
 function updateBodyClass() {
@@ -138,7 +138,6 @@ function init() {
 
   // this delay is for YouTube's layout to load
   setTimeout(() => {
-    addControls();
     updateBodyClass();
     setPlayerSize();
   }, 2000);
