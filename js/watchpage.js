@@ -64,7 +64,7 @@ function locationChanged(event) {
 function updateBodyClass() {
   var bodyClass = 'yt-stream-page';
 
-  if (isWatchPage) {
+  if (isWatchPage && isYspActive()) {
     document.getElementsByTagName('body')[0].classList.add(bodyClass);
 
   } else {
@@ -77,47 +77,48 @@ function isDarkThemeActive() {
 }
 
 function isYspActive() {
-  var bodyClass = 'yt-stream-page';
-  return document.getElementsByTagName('body')[0].classList.contains(bodyClass);
+  return onloadData.settings.is_active;
 }
 
 function addControls() {
-  var theme = isDarkThemeActive() ? 'dark' : 'light';
-
   var ysp_menu_button = document.createElement('img');
   ysp_menu_button.addEventListener('click', ypsButtonClick);
-  ysp_menu_button.alt = 'Click to disable YouTube Stream Page';
   ysp_menu_button.classList.add('ysp-menu-button');
   ysp_menu_button.classList.add('ytd-masthead');
-  ysp_menu_button.src = onloadData.img['ysp_active_' + theme];
-  ysp_menu_button.title = 'Click to disable YouTube Stream Page';
+
+  setYspMenuButtonVisuals(ysp_menu_button);
 
   var top_right_menu = document.querySelector('#masthead #end #buttons');
   top_right_menu.insertBefore(ysp_menu_button, top_right_menu.firstChild);
 }
 
-function ypsButtonClick(event) {
-  toggleYspActiveClass();
-}
-
-function toggleYspActiveClass() {
+function setYspMenuButtonVisuals(ysp_menu_button) {
   var theme = isDarkThemeActive() ? 'dark' : 'light';
-  var bodyClass = 'yt-stream-page';
-  var bodyClassList = document.getElementsByTagName('body')[0].classList;
-  var ysp_menu_button = document.querySelector('.ysp-menu-button');
 
-  if (bodyClassList.contains(bodyClass)) {
-    bodyClassList.remove(bodyClass);
-    ysp_menu_button.alt = 'Click to enable YouTube Stream Page';
-    ysp_menu_button.src = onloadData.img['ysp_inactive_' + theme];
-    ysp_menu_button.title = 'Click to enable YouTube Stream Page';
-
-  } else {
-    bodyClassList.add(bodyClass);
+  if (isYspActive()) {
     ysp_menu_button.alt = 'Click to disable YouTube Stream Page';
     ysp_menu_button.src = onloadData.img['ysp_active_' + theme];
     ysp_menu_button.title = 'Click to disable YouTube Stream Page';
+
+  } else {
+    ysp_menu_button.alt = 'Click to enable YouTube Stream Page';
+    ysp_menu_button.src = onloadData.img['ysp_inactive_' + theme];
+    ysp_menu_button.title = 'Click to enable YouTube Stream Page';
   }
+}
+
+function ypsButtonClick(event) {
+  toggleYspActive();
+}
+
+function toggleYspActive() {
+  onloadData.settings.is_active = !isYspActive();
+
+  var ysp_menu_button = document.querySelector('.ysp-menu-button');
+  setYspMenuButtonVisuals(ysp_menu_button);
+
+  updateBodyClass();
+  setPlayerSize();
 }
 
 function yspOnload(event) {

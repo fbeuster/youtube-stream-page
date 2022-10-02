@@ -4,7 +4,7 @@ function addScript(filename) {
   script.type = "text/javascript";
   document.getElementsByTagName("body")[0].appendChild(script);
 
-  // sending images over
+  // sending data over when loading
   script.onload = function() {
     var data = {
       'img' : {
@@ -12,6 +12,9 @@ function addScript(filename) {
         'ysp_active_light' : chrome.runtime.getURL('img/ysp_active_light.png'),
         'ysp_inactive_dark' : chrome.runtime.getURL('img/ysp_inactive_dark.png'),
         'ysp_inactive_light' : chrome.runtime.getURL('img/ysp_inactive_light.png')
+      },
+      'settings' : {
+        'is_active' : true
       }
     };
 
